@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { FRONTEND_ROUTES } from './common/constants/frontend-routes.constants';
+import { IconContext } from 'react-icons';
 
 import Dashboard from './pages/Dashboard';
 import Bookings from './pages/Bookings';
@@ -20,7 +21,9 @@ const App = () => {
 				<Route
 					element={
 						<ProtectedRoute isLoggedIn={isLoggedIn}>
-							<AppLayout />
+							<IconContext.Provider value={{ size: '1.5rem' }}>
+								<AppLayout />
+							</IconContext.Provider>
 						</ProtectedRoute>
 					}>
 					<Route
