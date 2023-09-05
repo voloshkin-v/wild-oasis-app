@@ -6,7 +6,7 @@ import {
 	HiOutlineUsers,
 	HiOutlineCog6Tooth,
 } from 'react-icons/hi2';
-import { FRONTEND_ROUTES } from '../common/constants/frontend-routes.constants';
+import { FRONTEND_ROUTES } from '../constants/frontend-routes.constants';
 
 const navigation = [
 	{

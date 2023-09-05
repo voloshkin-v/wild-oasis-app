@@ -8,10 +8,10 @@ const AppLayout = () => {
 		<div className="flex min-h-screen">
 			<Sidebar />
 
-			<main className="flex flex-1 flex-col">
+			<main className="block w-full bg-gray-50">
 				<Header />
 
-				<div className="flex-1 bg-gray-50 p-6 lg:p-12">
+				<div className="ml-auto mr-auto flex max-w-7xl flex-1 flex-col gap-y-8 p-6 lg:p-12">
 					<Outlet />
 				</div>
 			</main>
