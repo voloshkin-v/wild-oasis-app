@@ -1,4 +1,5 @@
 import supabase from './supabase';
+import { NewCabin } from '../types/supabase.helper';
 
 export const getCabins = async () => {
 	const { data, error } = await supabase.from('cabins').select('*');
@@ -15,6 +16,20 @@ export const deleteCabin = async (id: number) => {
 
 	if (error) {
 		throw new Error('Cabins could not be deleted.');
+	}
+
+	return data;
+};
+
+export const createCabin = async (newCabin: NewCabin) => {
+	const { data, error } = await supabase
+		.from('cabins')
+		.insert([newCabin])
+		.select();
+
+	if (error) {
+		console.log('Error', error);
+		throw new Error('Cabins could not be created.');
 	}
 
 	return data;

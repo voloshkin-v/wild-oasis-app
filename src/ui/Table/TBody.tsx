@@ -5,10 +5,8 @@ type TBodyProps = {
 };
 
 const TBody = ({ children }: TBodyProps) => {
-	console.log('TBody renders!');
-
 	return (
-		<div role="rowgroup" className="rounded-es-lg rounded-ee-lg bg-white">
+		<div role="rowgroup" className="rounded-ee-lg rounded-es-lg bg-white">
 			{children}
 		</div>
 	);

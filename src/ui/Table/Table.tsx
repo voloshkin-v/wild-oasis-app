@@ -27,16 +27,13 @@ type TableProps = {
 };
 
 const Table = ({ cols, customClass, children }: TableProps) => {
-	console.log('Table renders!');
 	return (
 		<TableContext.Provider
 			value={{
 				cols,
 				customClass,
 			}}>
-			<div
-				role="table"
-				className="border-gray-200 rounded-lg border text-sm">
+			<div role="table" className="rounded-lg border border-gray-200">
 				{children}
 			</div>
 		</TableContext.Provider>

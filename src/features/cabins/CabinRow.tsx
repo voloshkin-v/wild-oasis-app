@@ -1,19 +1,19 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteCabin } from '../../services/cabins';
-import { Row } from '../../types/supabase.helper';
+import { Cabin } from '../../types/supabase.helper';
 import { useTable } from '../../ui/Table/Table';
 
 import { toast } from 'react-hot-toast';
 
 type CabinRowProps = {
-	cabin: Row<'cabins'>;
+	cabin: Cabin;
 };
 
 const CabinRow = ({ cabin }: CabinRowProps) => {
 	const queryClient = useQueryClient();
 	const { customClass, cols } = useTable();
 
-	const { mutate } = useMutation({
+	const { mutate, isLoading } = useMutation({
 		mutationFn: deleteCabin,
 		onSuccess: () => {
 			toast.success('Cabin successfully deleted');
@@ -34,7 +34,7 @@ const CabinRow = ({ cabin }: CabinRowProps) => {
 	return (
 		<div
 			role="row"
-			className={`grid items-center gap-6 ${
+			className={`grid items-center gap-6 border-t border-gray-100 ${
 				customClass || `grid-cols-${cols.length}`
 			}`}>
 			<div role="cell">
@@ -45,7 +45,10 @@ const CabinRow = ({ cabin }: CabinRowProps) => {
 			<div role="cell">Fits up up {maxCapacity} guests</div>
 			<div role="cell">${regularPrice}</div>
 			<div role="cell">${discount}</div>
-			<button onClick={() => mutate(id)}>Delete</button>
+
+			<button disabled={isLoading} onClick={() => mutate(id)}>
+				Delete
+			</button>
 		</div>
 	);
 };

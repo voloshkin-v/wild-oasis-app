@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
-import { FRONTEND_ROUTES } from '../constants/frontend-routes.constants';
+import { FRONTEND_ROUTES } from '../constants/frontendRoutes.constants';
 
 type ProtectedRoute = {
 	isLoggedIn: boolean;
