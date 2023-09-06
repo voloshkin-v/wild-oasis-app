@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 
-type TBodyProps = {
+type TableBodyProps = {
 	children: ReactNode;
 };
 
-const TBody = ({ children }: TBodyProps) => {
+const TableBody = ({ children }: TableBodyProps) => {
 	return (
 		<div role="rowgroup" className="rounded-ee-lg rounded-es-lg bg-white">
 			{children}
@@ -12,4 +12,4 @@ const TBody = ({ children }: TBodyProps) => {
 	);
 };
 
-export default TBody;
+export default TableBody;

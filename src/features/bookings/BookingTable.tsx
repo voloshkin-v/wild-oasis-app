@@ -1,13 +1,13 @@
-import { Table, TBody, THead } from '../../ui/Table';
+import { Table, TableBody, TableHead } from '../../ui/Table';
 
 const cols = ['Cabin', 'Guest', 'Dates', 'Status', 'Amount', ''];
 
 const BookingTable = () => {
 	return (
 		<Table cols={cols}>
-			<THead />
+			<TableHead />
 
-			<TBody>TABLE BODY.</TBody>
+			<TableBody>TABLE BODY.</TableBody>
 		</Table>
 	);
 };

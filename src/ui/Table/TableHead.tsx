@@ -1,6 +1,6 @@
 import { useTable } from './Table';
 
-const THead = () => {
+const TableHead = () => {
 	const { customClass, cols } = useTable();
 
 	return (
@@ -20,4 +20,4 @@ const THead = () => {
 	);
 };
 
-export default THead;
+export default TableHead;

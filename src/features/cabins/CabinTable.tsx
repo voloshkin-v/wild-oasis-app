@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getCabins } from '../../services/cabins';
 
-import { Table, TBody, THead } from '../../ui/Table';
+import { Table, TableBody, TableHead } from '../../ui/Table';
 import CabinRow from './CabinRow';
 import Loader from '../../ui/Loader';
 
@@ -27,13 +27,13 @@ const CabinTable = () => {
 
 	return (
 		<Table cols={cols}>
-			<THead />
+			<TableHead />
 
-			<TBody>
+			<TableBody>
 				{cabins.map((cabin) => (
 					<CabinRow key={cabin.id} cabin={cabin} />
 				))}
-			</TBody>
+			</TableBody>
 		</Table>
 	);
 };

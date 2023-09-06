@@ -11,7 +11,7 @@ const AppLayout = () => {
 			<main className="block w-full bg-gray-50">
 				<Header />
 
-				<div className="ml-auto mr-auto flex max-w-7xl flex-1 flex-col gap-y-8 p-6 lg:p-12">
+				<div className="no-scrollbar ml-auto mr-auto flex h-[calc(100vh-48px)] max-w-7xl flex-1 flex-col gap-y-8 overflow-y-auto p-6 lg:p-12">
 					<Outlet />
 				</div>
 			</main>
