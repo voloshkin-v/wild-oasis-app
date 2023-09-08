@@ -33,7 +33,7 @@ const Table = ({ cols, customClass, children }: TableProps) => {
 				cols,
 				customClass,
 			}}>
-			<div role="table" className="rounded-lg border border-gray-200">
+			<div role="table" className="rounded-lg border">
 				{children}
 			</div>
 		</TableContext.Provider>

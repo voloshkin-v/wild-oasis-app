@@ -6,37 +6,40 @@ import {
 	HiOutlineUsers,
 	HiOutlineCog6Tooth,
 } from 'react-icons/hi2';
-import { FRONTEND_ROUTES } from '../constants/frontendRoutes.constants';
+import { ROUTER_PATHS } from '../router/routerPaths.constant';
 
 const navigation = [
 	{
-		path: FRONTEND_ROUTES.DASHBOARD,
+		path: ROUTER_PATHS.DASHBOARD,
 		title: 'Home',
 		icon: <HiOutlineHome />,
 	},
 	{
-		path: FRONTEND_ROUTES.BOOKINGS,
+		path: ROUTER_PATHS.BOOKINGS,
 		title: 'Bookings',
 		icon: <HiOutlineCalendarDays />,
 	},
 	{
-		path: FRONTEND_ROUTES.CABIBS,
+		path: ROUTER_PATHS.CABIBS,
 		title: 'Cabins',
 		icon: <HiOutlineHomeModern />,
 	},
 	{
-		path: FRONTEND_ROUTES.USERS,
+		path: ROUTER_PATHS.USERS,
 		title: 'Users',
 		icon: <HiOutlineUsers />,
 	},
 	{
-		path: FRONTEND_ROUTES.SETTINGS,
+		path: ROUTER_PATHS.SETTINGS,
 		title: 'Settings',
 		icon: <HiOutlineCog6Tooth />,
 	},
 ];
 
 const MainNav = () => {
+	const classNames =
+		'flex items-center gap-x-3 rounded p-2 text-gray-600 lg:px-6 lg:py-3 hover:text-indigo-600 hover:bg-gray-50';
+
 	return (
 		<nav>
 			<ul className="flex flex-col gap-y-2">
@@ -44,7 +47,11 @@ const MainNav = () => {
 					<NavLink
 						to={path}
 						key={index}
-						className={`flex items-center gap-x-3 rounded p-2 text-gray-600 hover:bg-gray-50 hover:text-gray-800 lg:px-6 lg:py-3`}>
+						className={({ isActive }) => {
+							return isActive
+								? `${classNames} bg-gray-50 text-indigo-600`
+								: `${classNames}`;
+						}}>
 						{icon}
 						<span className="hidden lg:block">{title}</span>
 					</NavLink>

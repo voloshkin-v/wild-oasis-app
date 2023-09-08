@@ -1,4 +1,4 @@
-export const FRONTEND_ROUTES = {
+export const ROUTER_PATHS = {
 	DASHBOARD: 'dashboard',
 	BOOKINGS: 'bookings',
 	CABIBS: 'cabins',

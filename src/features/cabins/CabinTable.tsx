@@ -1,21 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
-import { getCabins } from '../../services/cabins';
-
 import { Table, TableBody, TableHead } from '../../ui/Table';
+import { useCabins } from './hooks/useCabins';
+
 import CabinRow from './CabinRow';
 import Loader from '../../ui/Loader';
 
 const cols = ['', 'Cabin', 'Capacity', 'Price', 'Discount', ''];
 
 const CabinTable = () => {
-	const {
-		data: cabins,
-		isLoading,
-		isError,
-	} = useQuery({
-		queryKey: ['cabins'],
-		queryFn: getCabins,
-	});
+	const { data: cabins, isLoading, isError } = useCabins();
 
 	if (isLoading) {
 		return <Loader />;

@@ -1,5 +1,5 @@
 import supabase from './supabase';
-import { NewCabin } from '../types/supabase.helper';
+import { NewCabin } from '../types/cabin.types';
 
 export const getCabins = async () => {
 	const { data, error } = await supabase.from('cabins').select('*');
@@ -22,13 +22,29 @@ export const deleteCabin = async (id: number) => {
 };
 
 export const createCabin = async (newCabin: NewCabin) => {
+	const imageFile = newCabin.image[0];
+
+	const imageName = imageFile.name;
+	const imagePath = `${
+		import.meta.env.VITE_SUPABASE_URL
+	}/storage/v1/object/public/cabin-images/${imageName}`;
+
+	const { error: storageError } = await supabase.storage
+		.from('cabin-images')
+		.upload(imageName, imageFile);
+
+	if (storageError) {
+		throw new Error(
+			`Cabin image could not be uploaded. ${storageError.message}`,
+		);
+	}
+
 	const { data, error } = await supabase
 		.from('cabins')
-		.insert([newCabin])
+		.insert([{ ...newCabin, image: imagePath }])
 		.select();
 
 	if (error) {
-		console.log('Error', error);
 		throw new Error('Cabins could not be created.');
 	}
 

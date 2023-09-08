@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
-import { FRONTEND_ROUTES } from '../constants/frontendRoutes.constants';
+import { ROUTER_PATHS } from './routerPaths.constant';
 
 type ProtectedRoute = {
 	isLoggedIn: boolean;
@@ -9,7 +9,7 @@ type ProtectedRoute = {
 
 const ProtectedRoute = ({ isLoggedIn, children }: ProtectedRoute) => {
 	if (!isLoggedIn) {
-		return <Navigate to={FRONTEND_ROUTES.LOGIN} />;
+		return <Navigate to={ROUTER_PATHS.LOGIN} />;
 	}
 
 	return children;
