@@ -6,14 +6,12 @@ type FormProps = FormHTMLAttributes<HTMLFormElement> & {
 
 const Form = ({ children, ...props }: FormProps) => {
 	return (
-		<form className="rounded-md border bg-white px-10 py-6" {...props}>
-			{children}
-		</form>
+		<>
+			<form className="rounded-md border bg-white px-10 py-6" {...props}>
+				{children}
+			</form>
+		</>
 	);
-};
-
-const TT = () => {
-	return <></>;
 };
 
 export default Form;

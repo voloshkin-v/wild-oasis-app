@@ -1,8 +1,9 @@
-import { Table, TableBody, TableHead } from '../../ui/Table';
 import { useCabins } from './hooks/useCabins';
 
 import CabinRow from './CabinRow';
 import Loader from '../../ui/Loader';
+import Table from '../../ui/table/Table';
+import { Cabin } from '../../types/cabin.types';
 
 const cols = ['', 'Cabin', 'Capacity', 'Price', 'Discount', ''];
 
@@ -18,15 +19,17 @@ const CabinTable = () => {
 	}
 
 	return (
-		<Table cols={cols}>
-			<TableHead />
-
-			<TableBody>
-				{cabins.map((cabin) => (
-					<CabinRow key={cabin.id} cabin={cabin} />
-				))}
-			</TableBody>
-		</Table>
+		<>
+			<Table cols={cols}>
+				<Table.Header />
+				<Table.Body
+					data={cabins}
+					render={(cabin) => (
+						<CabinRow key={cabin.id} cabin={cabin} />
+					)}
+				/>
+			</Table>
+		</>
 	);
 };
 
