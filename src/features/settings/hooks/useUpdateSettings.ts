@@ -16,7 +16,6 @@ export const useUpdateSettings = () => {
 		},
 		onError: (error) => {
 			if (error instanceof Error) {
-				console.log(error);
 				toast.error(error.message);
 			}
 		},

@@ -7,7 +7,9 @@ export default {
 		},
 		extend: {
 			borderRadius: {
-				DEFAULT: '5px',
+				sm: '5px',
+				md: '7px',
+				lg: '9px',
 			},
 			borderColor: {
 				DEFAULT: '#f3f4f6',

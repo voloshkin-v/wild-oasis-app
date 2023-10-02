@@ -3,7 +3,7 @@ import { useCreateCabin } from './hooks/useCreateCabin';
 import { Cabin } from '../../types/cabin.types';
 
 import Button from '../../ui/Button';
-import FormRow from '../../ui/Form/FormRow';
+import FormRow from '../../ui/form/FormRow';
 
 type FormValues = {
 	name: string;

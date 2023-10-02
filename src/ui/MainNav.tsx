@@ -37,9 +37,6 @@ const navigation = [
 ];
 
 const MainNav = () => {
-	const classNames =
-		'flex items-center gap-x-3 rounded p-2 text-gray-600 lg:px-6 lg:py-3 hover:text-indigo-600 hover:bg-gray-50';
-
 	return (
 		<nav>
 			<ul className="flex flex-col gap-y-2">
@@ -48,9 +45,9 @@ const MainNav = () => {
 						to={path}
 						key={index}
 						className={({ isActive }) => {
-							return isActive
-								? `${classNames} bg-gray-50 text-indigo-600`
-								: `${classNames}`;
+							return `flex items-center gap-x-3 rounded p-2 text-gray-600 transition-colors hover:bg-gray-50 hover:text-indigo-600 lg:px-6 lg:py-3 ${
+								isActive ? 'bg-gray-50 text-indigo-600' : ''
+							}`;
 						}}>
 						{icon}
 						<span className="hidden lg:block">{title}</span>

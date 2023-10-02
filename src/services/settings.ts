@@ -21,6 +21,8 @@ export const updateSettings = async (newSettings: Settings) => {
 		.eq('id', 1)
 		.select();
 
+	console.log(data);
+
 	if (error) {
 		throw new Error('Settings could not be updated');
 	}

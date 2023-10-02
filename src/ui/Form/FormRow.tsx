@@ -1,11 +1,9 @@
-import { ReactNode } from 'react';
-
 import ErrorMessage from './ErrorMessage';
 
 type FormRowProps = {
 	label: string;
 	error?: string | undefined;
-	children: ReactNode;
+	children: React.ReactNode;
 };
 
 const FormRow = ({ label, error, children }: FormRowProps) => {

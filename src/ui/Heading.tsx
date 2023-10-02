@@ -1,7 +1,5 @@
-import { ReactNode } from 'react';
-
 type HeadingProps = {
-	children: ReactNode;
+	children: React.ReactNode;
 };
 
 const Heading = ({ children }: HeadingProps) => {

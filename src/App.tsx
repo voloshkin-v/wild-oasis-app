@@ -1,5 +1,4 @@
 import { Toaster } from 'react-hot-toast';
-
 import Router from './router/Router';
 
 const App = () => {

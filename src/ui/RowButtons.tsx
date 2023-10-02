@@ -1,7 +1,5 @@
-import { ReactNode } from 'react';
-
 type RowButtonsProps = {
-	children: ReactNode;
+	children: React.ReactNode;
 };
 
 const RowButtons = ({ children }: RowButtonsProps) => {

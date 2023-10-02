@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { ROUTER_PATHS } from './routerPaths.constant';
 
 type ProtectedRoute = {
 	isLoggedIn: boolean;
-	children: ReactNode;
+	children: React.ReactNode;
 };
 
 const ProtectedRoute = ({ isLoggedIn, children }: ProtectedRoute) => {

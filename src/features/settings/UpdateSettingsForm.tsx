@@ -2,12 +2,10 @@ import { useSettings } from './hooks/useSettings';
 import { useUpdateSettings } from './hooks/useUpdateSettings';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import Form from '../../ui/Form/Form';
-import FormRow from '../../ui/Form/FormRow';
+import Form from '../../ui/form/Form';
 import Loader from '../../ui/Loader';
 import Button from '../../ui/Button';
 import RowButtons from '../../ui/RowButtons';
-import Input from '../../ui/Form/Input';
 
 type FormValues = {
 	minBookingLength: number;
@@ -17,7 +15,11 @@ type FormValues = {
 };
 
 const UpdateSettingsForm = () => {
-	const { register, handleSubmit } = useForm<FormValues>();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<FormValues>();
 
 	const {
 		data: {
@@ -29,6 +31,7 @@ const UpdateSettingsForm = () => {
 		isLoading,
 		isError,
 	} = useSettings();
+
 	const { isUpdating, updateSettings } = useUpdateSettings();
 
 	if (isLoading) {
@@ -36,7 +39,7 @@ const UpdateSettingsForm = () => {
 	}
 
 	if (isError) {
-		return <h2>Error...</h2>;
+		return <h2>Error.</h2>;
 	}
 
 	const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -45,45 +48,73 @@ const UpdateSettingsForm = () => {
 
 	return (
 		<Form onSubmit={handleSubmit(onSubmit)}>
-			<FormRow label="Minimum nights/booking">
-				<Input
+			<Form.Row
+				label="Minimum nights/booking"
+				error={errors.minBookingLength?.message}>
+				<Form.Input
 					defaultValue={minBookingLength}
 					type="number"
 					{...register('minBookingLength', {
 						valueAsNumber: true,
+						required: 'This field is required',
+						min: {
+							value: 1,
+							message: 'This field cannot be less than 1',
+						},
 					})}
 				/>
-			</FormRow>
+			</Form.Row>
 
-			<FormRow label="Maximum nights/booking">
-				<Input
+			<Form.Row
+				label="Maximum nights/booking"
+				error={errors.maxBookingLength?.message}>
+				<Form.Input
 					defaultValue={maxBookingLength}
 					type="number"
 					{...register('maxBookingLength', {
 						valueAsNumber: true,
+						required: 'This field is required',
+						min: {
+							value: 1,
+							message: 'This field cannot be less than 1',
+						},
 					})}
 				/>
-			</FormRow>
+			</Form.Row>
 
-			<FormRow label="Maximum guests/booking">
-				<Input
+			<Form.Row
+				label="Maximum guests/booking"
+				error={errors.maxGuestsPerBooking?.message}>
+				<Form.Input
 					defaultValue={maxGuestsPerBooking}
 					type="number"
 					{...register('maxGuestsPerBooking', {
 						valueAsNumber: true,
+						required: 'This field is required',
+						min: {
+							value: 1,
+							message: 'This field cannot be less than 1',
+						},
 					})}
 				/>
-			</FormRow>
+			</Form.Row>
 
-			<FormRow label="Breakfast price">
-				<Input
+			<Form.Row
+				label="Breakfast price"
+				error={errors.breakfastPrice?.message}>
+				<Form.Input
 					defaultValue={breakfastPrice}
 					type="number"
 					{...register('breakfastPrice', {
 						valueAsNumber: true,
+						required: 'This field is required',
+						min: {
+							value: 0,
+							message: "This field can't be negative",
+						},
 					})}
 				/>
-			</FormRow>
+			</Form.Row>
 
 			<RowButtons>
 				<Button disabled={isUpdating}>Update</Button>
